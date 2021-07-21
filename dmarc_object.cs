@@ -12,6 +12,8 @@ namespace DMARC_parser
         public string domain_name { get; set; }
         public string report_date { get; set; }
         public string report_id { get; set; }
+
+        public List<dmarc_record_object> records { get; set; }
     }
 
     public class dmarc_record_object
