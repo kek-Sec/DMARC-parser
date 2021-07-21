@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
+using System.Xml.Linq;
 
 namespace DMARC_parser
 {
@@ -13,14 +13,14 @@ namespace DMARC_parser
         
         public xml_parser(string filepath)
         {
-            XmlDocument xDoc = new XmlDocument();
-
-            xDoc.Load(filepath);
+            var xml = XDocument.Load(filepath);
 
             DMARC = new dmarc_object();
             DMARC.records = new List<dmarc_record_object>();
 
-            XmlNodeList name = xDoc.GetElementsByTagName("myName");
+            var record_nodes = xml.Descendants("record").Where(b => b.Parent.Name == "feedback");
+            
+
 
         }
     }
