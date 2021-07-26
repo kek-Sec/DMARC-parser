@@ -6,6 +6,10 @@ namespace DMARC_parser
     class xml_parser
     {
         
+        /// <summary>
+        /// Parse dmarc report
+        /// </summary>
+        /// <param name="filepath">The path with the filename for the xml file-report</param>
         public xml_parser(string filepath)
         {
             XmlDocument doc = new XmlDocument();

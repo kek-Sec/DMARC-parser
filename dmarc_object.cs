@@ -2,6 +2,9 @@
 
 namespace DMARC_parser
 {
+    /// <summary>
+    /// Main dmarc report object
+    /// </summary>
     public class dmarc_object
     {
         public string organization_name { get; set; }
@@ -16,6 +19,9 @@ namespace DMARC_parser
         }
     }
 
+    /// <summary>
+    /// Object for individual records inside the report
+    /// </summary>
     public class dmarc_record_object
     {
         public string source_ip { get; set; }
