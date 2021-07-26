@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 
 namespace DMARC_parser
@@ -47,8 +43,11 @@ namespace DMARC_parser
             rec_obj.spf_auth_result = auth_spf_res.InnerText;
 
 
+            //add record to records list
+            records.Add(rec_obj);
 
-
+            //add list to dmarc object
+            dmarc.records = records;
 
         }
     }
