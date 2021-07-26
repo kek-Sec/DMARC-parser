@@ -9,7 +9,6 @@ namespace DMARC_parser
 {
     class xml_parser
     {
-        dmarc_object DMARC;
         
         public xml_parser(string filepath)
         {
@@ -37,7 +36,16 @@ namespace DMARC_parser
             XmlNode auth_dkim_res = doc.DocumentElement.SelectSingleNode("/feedback/record/auth_results/dkim/result");
             XmlNode auth_spf_res = doc.DocumentElement.SelectSingleNode("/feedback/record/auth_results/spf/result");
 
-            Console.WriteLine(source_ip.InnerText);
+            //add record items
+            dmarc_record_object rec_obj = new dmarc_record_object();
+            rec_obj.source_ip = source_ip.InnerText;
+            rec_obj.email_count = email_count.InnerText;
+            rec_obj.policy_evaluated_dkim = dkim_policy_eval.InnerText;
+            rec_obj.policy_evaluated_spf = spf_policy_eval.InnerText;
+            rec_obj.header_from = header_from.InnerText;
+            rec_obj.dkim_auth_result = auth_dkim_res.InnerText;
+            rec_obj.spf_auth_result = auth_spf_res.InnerText;
+
 
 
 
