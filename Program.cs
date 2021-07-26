@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace DMARC_parser
 {
@@ -6,9 +8,27 @@ namespace DMARC_parser
     {
          static void Main(string[] args)
         {
-            var path = "C:\\test.xml";
+            xml_parser parser;
+            string path;
 
-            xml_parser parser = new xml_parser(path);
+            if (args.Any())
+            {
+                path = args[0];
+                if (File.Exists(path))
+                {
+                    parser = new xml_parser(path);
+                    return;
+                }
+                while(!File.Exists(path))
+                {
+                    pl("File " + path + "not found...");
+                    pl("Insert valid filepath...");
+                    path = rl();
+                }
+                parser = new xml_parser(path);
+                return;
+            }
+
         }
 
 
