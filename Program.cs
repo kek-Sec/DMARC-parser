@@ -8,16 +8,9 @@ namespace DMARC_parser
     {
          static void Main(string[] args)
         {
-            pl("Insert filename");
-            var filename = rl();
+            var path = "C:\\test.xml";
 
-            //verify that file exists
-            while(!File.Exists(filename))
-            {
-                pl("File not found , try again");
-                filename = rl();
-            }
-
+            xml_parser parser = new xml_parser(path);
         }
 
 

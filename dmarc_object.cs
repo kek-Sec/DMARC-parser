@@ -10,10 +10,14 @@ namespace DMARC_parser
     {
         public string organization_name { get; set; }
         public string domain_name { get; set; }
-        public string report_date { get; set; }
         public string report_id { get; set; }
 
         public List<dmarc_record_object> records { get; set; }
+
+        public override string ToString()
+        {
+            return $"ORG NAME -> {organization_name} \n DOMAIN -> {domain_name} \n ID -> {report_id}";
+        }
     }
 
     public class dmarc_record_object
