@@ -17,7 +17,7 @@ namespace DMARC_parser
             doc.Load(filepath);
 
             dmarc_object dmarc = new dmarc_object();
-            //DMARC.records = new List<dmarc_record_object>();
+            List< dmarc_record_object> records = new List<dmarc_record_object>();
 
             XmlNode org_name = doc.DocumentElement.SelectSingleNode("/feedback/report_metadata/org_name");
             XmlNode org_domain = doc.DocumentElement.SelectSingleNode("/feedback/policy_published/domain");
@@ -28,7 +28,16 @@ namespace DMARC_parser
             dmarc.report_id = org_report_id.InnerText;
             dmarc.domain_name = org_domain.InnerText;
 
-            Console.WriteLine(dmarc.ToString());
+            //get record data
+            XmlNode source_ip = doc.DocumentElement.SelectSingleNode("/feedback/record/row/source_ip");
+            XmlNode email_count = doc.DocumentElement.SelectSingleNode("/feedback/record/row/count");
+            XmlNode dkim_policy_eval = doc.DocumentElement.SelectSingleNode("/feedback/record/row/policy_evaluated/dkim");
+            XmlNode spf_policy_eval = doc.DocumentElement.SelectSingleNode("/feedback/record/row/policy_evaluated/spf");
+            XmlNode header_from = doc.DocumentElement.SelectSingleNode("/feedback/record/identifiers/header_from");
+            XmlNode auth_dkim_res = doc.DocumentElement.SelectSingleNode("/feedback/record/auth_results/dkim/result");
+            XmlNode auth_spf_res = doc.DocumentElement.SelectSingleNode("/feedback/record/auth_results/spf/result");
+
+            Console.WriteLine(source_ip.InnerText);
 
 
 
