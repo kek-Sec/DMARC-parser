@@ -4,6 +4,21 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>DMARC_parser</RootNamespace>
+    <ApplicationIcon>FavicoPCS.ico</ApplicationIcon>
+    <StartupObject>DMARC_parser.Program</StartupObject>
+    <Authors>kek-sec</Authors>
+    <Company>https://github.com/kek-Sec</Company>
+    <Description>DMARC xml parser utility</Description>
+    <Copyright>2021</Copyright>
+    <RepositoryUrl>https://github.com/kek-Sec/DMARC-parser</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/kek-Sec/DMARC-parser</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>kek-sec.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
 </Project>
