@@ -11,23 +11,19 @@ namespace DMARC_parser
             xml_parser parser;
             string path;
 
-            if (args.Any())
-            {
-                path = args[0];
-                if (File.Exists(path))
-                {
-                    parser = new xml_parser(path);
-                    return;
-                }
-                while(!File.Exists(path))
+            pl("Insert valid filepath...");
+            path = rl();
+
+            while (!File.Exists(path))
                 {
                     pl("File " + path + "not found...");
                     pl("Insert valid filepath...");
                     path = rl();
                 }
                 parser = new xml_parser(path);
+                
                 return;
-            }
+            
 
         }
 

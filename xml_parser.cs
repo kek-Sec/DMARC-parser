@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace DMARC_parser
@@ -18,6 +19,7 @@ namespace DMARC_parser
             dmarc_object dmarc = new dmarc_object();
             List< dmarc_record_object> records = new List<dmarc_record_object>();
 
+            //get report data
             XmlNode org_name = doc.DocumentElement.SelectSingleNode("/feedback/report_metadata/org_name");
             XmlNode org_domain = doc.DocumentElement.SelectSingleNode("/feedback/policy_published/domain");
             XmlNode org_report_id = doc.DocumentElement.SelectSingleNode("/feedback/report_metadata/report_id");
@@ -53,6 +55,29 @@ namespace DMARC_parser
             //add list to dmarc object
             dmarc.records = records;
 
+            PrettyPrint(dmarc);
+        }
+
+        private void PrettyPrint(dmarc_object dmarc)
+        {
+            var records = dmarc.records;
+            string res = $"----------------------------\n" +
+                $"Organization --> [{dmarc.organization_name}]\n" +
+                $"Report ID ---> [{dmarc.report_id}]\n" +
+                $"Domain name --> [{dmarc.domain_name}]\n" +
+                $"----------------------------\n" +
+                $"Source ip --> [{records[0].source_ip}]\n" +
+                $"Email count --> [{records[0].email_count}]\n" +
+                $"----------------------------\n" +
+                $"Policy eval dkim --> [{records[0].policy_evaluated_dkim}]\n" +
+                $"Policy eval spf --> [{records[0].policy_evaluated_spf}]\n" +
+                $"----------------------------\n" +
+                $"Header from --> [{records[0].header_from}]\n" +
+                $"Auth result dkim --> [{records[0].dkim_auth_result}]\n" +
+                $"Auth result spf --> [{records[0].spf_auth_result}]\n" +
+                $"----------------------------\n";
+
+            Console.Write(res);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace DMARC_parser
 
         public override string ToString()
         {
-            return $"ORG NAME -> {organization_name} \n DOMAIN -> {domain_name} \n ID -> {report_id}";
+            return $"REPORTING ORG-> {organization_name} \n DOMAIN -> {domain_name} \n ID -> {report_id}";
         }
     }
 
