@@ -56,6 +56,7 @@ namespace DMARC_parser
             dmarc.records = records;
 
             PrettyPrint(dmarc);
+            Console.ReadLine();
             Environment.Exit(1);
         }
 
